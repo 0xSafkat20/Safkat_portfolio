@@ -446,29 +446,29 @@ const SKILLS_DATA = [
 ];
 
 const BLOG_POSTS = [
-  { id:1, emoji:"🤖", bg:"linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)", category:"AI Development", date:"May 12, 2025", readTime:"7 min read", title:"Building Production-Ready AI Features with the OpenAI API", excerpt:"Integrating GPT-4 into a real app is very different from a quick demo. This guide covers streaming responses, rate limiting, cost control, prompt versioning, and how to handle model errors so your users never see a broken experience." },
-  { id:2, emoji:"⚡", bg:"linear-gradient(135deg,#1a1410 0%,#2a1e10 100%)", category:"Performance", date:"Apr 28, 2025", readTime:"5 min read", title:"React Performance: The Optimisations Most Developers Skip", excerpt:"Most React performance guides stop at useMemo. This one goes further — virtualised lists, granular bundle splitting, avoiding layout thrashing, and the exact Lighthouse audit workflow I use to push client sites from the 50s to the 90s." },
-  { id:3, emoji:"🔐", bg:"linear-gradient(135deg,#0d1a0d 0%,#0e2a12 100%)", category:"Security", date:"Mar 15, 2025", readTime:"6 min read", title:"Zero-Knowledge Architecture: Build Apps That Can't Leak User Data", excerpt:"If your server can read your users' sensitive data, so can anyone who compromises it. This post walks through client-side AES-256 encryption, key derivation with PBKDF2, and how to implement it in a React + Node.js stack without sacrificing usability." },
+  { id:1, emoji:"🔥", bg:"linear-gradient(135deg,#1a1208 0%,#2a1a08 100%)", category:"Firebase", date:"Jan 2025", readTime:"5 min read", title:"Why I Keep Reaching for Firebase on Every New Project", excerpt:"It's not the perfect tool for everything, but Firebase has saved me weeks of setup time across my last three projects. Here's how I think about when it makes sense — and when it doesn't.", link:"https://github.com/0xSafkat20/Polling_and_Survey_App-Clint_site" },
+  { id:2, emoji:"⚛️", bg:"linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)", category:"React", date:"Nov 2024", readTime:"4 min read", title:"Building Role-Based UIs in React Without Losing Your Mind", excerpt:"Admin sees this, surveyor sees that, regular users see something else entirely. Here's the pattern I landed on after building the Polling App — context + route guards + conditional rendering, kept simple.", link:"https://github.com/0xSafkat20/Tech-client-side" },
+  { id:3, emoji:"🚇", bg:"linear-gradient(135deg,#0d1018 0%,#0e182e 100%)", category:"C# & .NET", date:"Aug 2024", readTime:"6 min read", title:"What Building a Desktop App Taught Me That Web Dev Never Did", excerpt:"Spending a month on a Windows Forms + SQL Server project was a different kind of challenge. No hot reload, no NPM, no Stack Overflow answers from last week. Here's what stuck with me.", link:"https://github.com/0xSafkat20/Metro-Rail_Online_Ticket_System" },
 ];
 
 const EXPERIENCE = [
   {
-    id:1, role:"Senior Full-Stack Developer", company:"TechVenture BD", type:"Full-time", date:"Jan 2023 – Present",
-    desc:"Lead engineer on a cross-functional team of 8, architecting and delivering SaaS products for fintech, healthtech, and e-commerce clients.",
+    id:1, role:"Freelance Web Developer", company:"Self-employed", type:"Freelance", date:"2023 – Present",
+    desc:"Building full-stack web applications for small clients and personal projects. Handling everything end-to-end — from UI design and React frontend to Firebase backend, authentication, and deployment.",
     achievements:[
-      "Redesigned the core API layer with GraphQL and Node.js, cutting response times by 42% and reducing server costs by 30%.",
-      "Integrated OpenAI GPT-4 into two client platforms shipped to 10,000+ active users.",
+      "Delivered the Polling & Survey App with role-based access (admin/surveyor/user), real-time charts, and payment integration — deployed live on Firebase.",
+      "Built the Tech Blog Platform with Recharts data visualisations and a full MongoDB + Express backend, currently live at rasel-blog-web.web.app.",
     ],
-    tags:["React","Node.js","GraphQL","TypeScript","OpenAI API","PostgreSQL","AWS"],
+    tags:["React","Firebase","Node.js","MongoDB","Tailwind CSS","Vite","Vercel"],
   },
   {
-    id:2, role:"Full-Stack Developer", company:"Nexora Digital", type:"Full-time", date:"Aug 2021 – Dec 2022",
-    desc:"End-to-end development of client web applications in an agile digital agency, working across product and client-facing projects.",
+    id:2, role:"Desktop App Developer", company:"Academic Project", type:"Project", date:"2022 – 2023",
+    desc:"Developed a full GUI desktop application for metro rail ticket booking as part of a university project. Built entirely in C# with a SQL Server database, covering user auth, admin controls, scheduling, and payment flows.",
     achievements:[
-      "Built a multi-vendor marketplace with Next.js and Stripe Connect, handling 500+ daily transactions within the first month.",
-      "Improved Lighthouse scores from 58 to 91 across 6 production sites through lazy loading and CDN optimisation.",
+      "Designed and implemented 11 application screens including login, e-ticket, admin dashboard, train schedule, and payment — all wired to a live SQL Server database.",
+      "Gained hands-on experience with OOP principles, Windows Forms UI design, and relational database management using SSMS.",
     ],
-    tags:["Next.js","React","Stripe","MongoDB","D3.js","Docker","Vercel"],
+    tags:["C#","Windows Forms","SQL Server","SSMS","OOP","Database Design","GUI"],
   },
 ];
 
@@ -571,7 +571,6 @@ export default function Portfolio() {
   const [scrolled,  setScrolled]  = useState(false);
   const [showTop,   setShowTop]   = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [formData,  setFormData]  = useState({ name:"", email:"", subject:"", message:"" });
   const [toast,     setToast]     = useState({ show:false, message:"", icon:"✅" });
 
@@ -605,14 +604,15 @@ export default function Portfolio() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    showToast("Message sent! I'll reply within 24 hours.", "✉️");
-    setTimeout(() => setSubmitted(false), 4000);
+    const { name, email, subject, message } = formData;
+    const body = `Hi Safkat,%0D%0A%0D%0AMy name is ${encodeURIComponent(name)} (${encodeURIComponent(email)}).%0D%0A%0D%0A${encodeURIComponent(message)}`;
+    window.location.href = `mailto:safkatkhan420@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    showToast("Opening your mail client…", "📬");
     setFormData({ name:"", email:"", subject:"", message:"" });
   };
 
   const navLinks = ["About","Skills","Projects","Experience","Blog","Contact"];
-  const GITHUB   = "https://github.com/safkatkhan";
+  const GITHUB   = "https://github.com/0xSafkat20";
 
   return (
     <>
@@ -623,7 +623,7 @@ export default function Portfolio() {
       </button>
 
       <nav className={`nav${scrolled ? " scrolled" : ""}`}>
-        <a href="#" className="nav-logo">SK</a>
+        <a href="#home" className="nav-logo">SK</a>
         <ul className="nav-links">
           {navLinks.map(l => <li key={l}><a href={`#${l.toLowerCase()}`}>{l}</a></li>)}
         </ul>
@@ -648,7 +648,7 @@ export default function Portfolio() {
         <div className="hero-content">
           <div className="hero-animate hero-eyebrow" style={{ animationDelay:".1s" }}>
             <span className="hero-eyebrow-dot" />
-            Open to opportunities
+            Based in Dhaka · Open to work
             <span className={`hero-status-badge ${onlineStatus.isOnline ? "is-online" : "is-offline"}`}>
               <span className="hero-status-dot" />
               <span className="hero-status-text">{onlineStatus.label}</span>
@@ -660,10 +660,10 @@ export default function Portfolio() {
             </h1>
           </div>
           <div className="hero-animate hero-tagline" style={{ animationDelay:".4s" }}>
-            Full-Stack Developer & AI Integration Specialist
+            Full-Stack Developer · React, Node.js & Firebase
           </div>
           <div className="hero-animate hero-desc" style={{ animationDelay:".55s" }}>
-            I build fast, scalable web applications and weave AI into products that feel genuinely intelligent — from architecture to pixel-perfect interfaces.
+            I build real web applications — job platforms, survey tools, mental health apps — and enjoy solving problems that actually matter to people. Based in Dhaka, open to remote work.
           </div>
           <div className="hero-animate hero-actions" style={{ animationDelay:".7s" }}>
             <a href="#projects" className="btn-primary">View My Work</a>
@@ -698,8 +698,8 @@ export default function Portfolio() {
               <div className="about-corner-br" />
 
               <div className="about-exp-chip">
-                <span className="about-exp-chip-num">4+</span>
-                <span className="about-exp-chip-label">Years<br/>Exp.</span>
+                <span className="about-exp-chip-num">2+</span>
+                <span className="about-exp-chip-label">Years<br/>Coding</span>
               </div>
 
               <div className={`about-online-indicator ${onlineStatus.isOnline ? "is-online" : "is-offline"}`}>
@@ -712,18 +712,18 @@ export default function Portfolio() {
 
             <div className="about-identity">
               <div className="about-identity-name">Safkat Khan</div>
-              <div className="about-identity-role">Full-Stack Developer & AI Specialist</div>
+              <div className="about-identity-role">Full-Stack Developer · React & Firebase</div>
             </div>
           </div>
 
           <div className="about-text fade-right" style={{ transitionDelay:".12s" }}>
             <div className="section-label">About Me</div>
-            <h2 className="section-title">Building with<br /><em>Purpose & Precision</em></h2>
+            <h2 className="section-title">Building things<br /><em>that actually work</em></h2>
             <div className="divider" />
-            <p>Hey, I'm Safkat — a full-stack developer with a knack for integrating AI into real-world products. I love turning ambitious ideas into clean, performant software that solves problems people actually care about.</p>
-            <p>From multi-vendor marketplaces to AI-powered dashboards, I bring both technical breadth and product thinking to every project. I write code that's meant to be maintained, extended, and proud of.</p>
+            <p>Hey, I'm Safkat — a full-stack developer from Dhaka who enjoys building things that actually work for real people. I started with C# desktop apps and gradually moved into the React and Firebase ecosystem, where most of my projects live now.</p>
+            <p>I've built job boards, survey platforms, mental health tools and ticketing systems — mostly solo, which means I've had to think about the full picture: design, logic, auth, data, and deployment. I'm still learning a lot, and I like it that way.</p>
             <div className="about-stats">
-              {[["4+","Years Exp."],["25+","Projects"],["12+","Clients"]].map(([n,l]) => (
+              {[["6+","Projects"],["2+","Years Coding"],["3","Live Apps"]].map(([n,l]) => (
                 <div className="stat-card fade-in" key={l}>
                   <div className="stat-num">{n}</div>
                   <div className="stat-label">{l}</div>
@@ -731,7 +731,7 @@ export default function Portfolio() {
               ))}
             </div>
             <div style={{ marginTop:"2.5rem" }}>
-              <a href="#contact" className="btn-primary">Let's Build Together</a>
+              <a href="#contact" className="btn-primary">Get in Touch</a>
             </div>
           </div>
         </div>
@@ -800,8 +800,8 @@ export default function Portfolio() {
       <section className="section experience" id="experience" ref={expRef}>
         <div className="experience-inner">
           <div className="fade-in">
-            <div className="section-label">Career Journey</div>
-            <h2 className="section-title">Work <em>Experience</em></h2>
+            <div className="section-label">How I Got Here</div>
+            <h2 className="section-title">Experience & <em>Background</em></h2>
           </div>
           <div className="exp-timeline">
             {EXPERIENCE.map((job) => (
@@ -841,8 +841,8 @@ export default function Portfolio() {
       <section className="section blog" id="blog" ref={blogRef}>
         <div className="blog-inner">
           <div className="fade-in">
-            <div className="section-label">Thoughts & Tutorials</div>
-            <h2 className="section-title">From the <em>Blog</em></h2>
+            <div className="section-label">Writing & Reflections</div>
+            <h2 className="section-title">Things I've <em>Learned</em></h2>
           </div>
           <div className="blog-grid fade-in">
             {BLOG_POSTS.map((post) => (
@@ -861,7 +861,7 @@ export default function Portfolio() {
                   <p className="blog-excerpt">{post.excerpt}</p>
                   <div className="blog-footer">
                     <span className="blog-read-time">🕒 {post.readTime}</span>
-                    <a href="#blog" className="blog-link">Read More →</a>
+                    <a href={post.link} target="_blank" rel="noreferrer" className="blog-link">See Project →</a>
                   </div>
                 </div>
               </article>
@@ -874,56 +874,51 @@ export default function Portfolio() {
         <div className="contact-inner">
           <div className="contact-info fade-left">
             <div className="section-label">Get In Touch</div>
-            <h2 className="section-title">Let's Build<br /><em>Something Great</em></h2>
+            <h2 className="section-title">Let's Work<br /><em>Together</em></h2>
             <div className="divider" />
-            <p>Have a project in mind or want to collaborate? I'm always excited to talk about ambitious ideas. I'll respond within 24 hours.</p>
+            <p>If you have a project idea, want to collaborate, or just want to chat about something you're building — feel free to reach out. I try to reply to every message within a day.</p>
             <div className="contact-details">
               {[
-                { icon:"📧", label:"safkat.khan@email.com" },
-                { icon:"📍", label:"Dhaka, Bangladesh" },
-                { icon:"💼", label:"linkedin.com/in/safkatkhan" },
-                { icon:"🐙", label:"github.com/safkatkhan" },
+                { icon:"📧", label:"safkatkhan420@gmail.com",        href:"mailto:safkatkhan420@gmail.com" },
+                { icon:"📍", label:"Dhaka, Bangladesh",               href:null },
+                { icon:"💼", label:"linkedin.com/in/0xsafkat20",      href:"https://www.linkedin.com/in/0xsafkat20/" },
+                { icon:"🐙", label:"github.com/0xSafkat20",           href:"https://github.com/0xSafkat20" },
               ].map(c => (
                 <div className="contact-item" key={c.label}>
                   <div className="contact-icon">{c.icon}</div>
-                  <span>{c.label}</span>
+                  {c.href
+                    ? <a href={c.href} target={c.href.startsWith("mailto") ? "_self" : "_blank"} rel="noreferrer" style={{ color:"inherit", textDecoration:"none" }}>{c.label}</a>
+                    : <span>{c.label}</span>
+                  }
                 </div>
               ))}
             </div>
           </div>
 
           <div className="fade-right" style={{ transitionDelay:".15s" }}>
-            {submitted ? (
-              <div style={{ border:"1px solid var(--border)", borderRadius:"4px", padding:"3rem 2rem", textAlign:"center", background:"var(--gold-dim)" }}>
-                <div style={{ fontSize:"2.5rem", marginBottom:"1rem" }}>✉️</div>
-                <div style={{ fontFamily:"var(--serif)", fontSize:"1.5rem", color:"var(--gold)", marginBottom:".5rem" }}>Message Sent!</div>
-                <div style={{ color:"var(--muted)", fontSize:".88rem" }}>Thanks for reaching out — I'll be in touch very soon.</div>
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Your Name</label>
+                  <input className="form-input" type="text" placeholder="Your name" required value={formData.name} onChange={e => setFormData({ ...formData, name:e.target.value })} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Email Address</label>
+                  <input className="form-input" type="email" placeholder="your@email.com" required value={formData.email} onChange={e => setFormData({ ...formData, email:e.target.value })} />
+                </div>
               </div>
-            ) : (
-              <form className="contact-form" onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label">Your Name</label>
-                    <input className="form-input" type="text" placeholder="e.g. Safkat Khan" required value={formData.name} onChange={e => setFormData({ ...formData, name:e.target.value })} />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Email Address</label>
-                    <input className="form-input" type="email" placeholder="safkat.khan@email.com" required value={formData.email} onChange={e => setFormData({ ...formData, email:e.target.value })} />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Subject</label>
-                  <input className="form-input" type="text" placeholder="Project enquiry / Collaboration" required value={formData.subject} onChange={e => setFormData({ ...formData, subject:e.target.value })} />
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Message</label>
-                  <textarea className="form-textarea" rows={5} placeholder="Tell me about your project, timeline, and budget..." required value={formData.message} onChange={e => setFormData({ ...formData, message:e.target.value })} />
-                </div>
-                <button type="submit" className="btn-primary" style={{ width:"100%", padding:"1rem", fontSize:".84rem", justifyContent:"center" }}>
-                  Send Message →
-                </button>
-              </form>
-            )}
+              <div className="form-group">
+                <label className="form-label">Subject</label>
+                <input className="form-input" type="text" placeholder="What's this about?" required value={formData.subject} onChange={e => setFormData({ ...formData, subject:e.target.value })} />
+              </div>
+              <div className="form-group">
+                <label className="form-label">Message</label>
+                <textarea className="form-textarea" rows={5} placeholder="Tell me what you're working on, or just say hi…" required value={formData.message} onChange={e => setFormData({ ...formData, message:e.target.value })} />
+              </div>
+              <button type="submit" className="btn-primary" style={{ width:"100%", padding:"1rem", fontSize:".84rem", justifyContent:"center" }}>
+                Send via Email →
+              </button>
+            </form>
           </div>
         </div>
       </section>
@@ -932,7 +927,7 @@ export default function Portfolio() {
         <span className="footer-logo">Safkat Khan</span>
         <span>© {new Date().getFullYear()} · All rights reserved</span>
         <div className="footer-links">
-          {[["GitHub",GITHUB],["LinkedIn","#"],["Twitter","#"]].map(([s,h]) => (
+          {[["GitHub",GITHUB],["LinkedIn","https://www.linkedin.com/in/0xsafkat20/"]].map(([s,h]) => (
             <a href={h} key={s} target="_blank" rel="noreferrer">{s}</a>
           ))}
         </div>
