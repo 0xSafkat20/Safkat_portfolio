@@ -344,21 +344,105 @@ const BASE_CSS = `
 `;
 
 const PROJECTS = [
-  { id:1, emoji:"🧠", bg:"linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)", title:"NeuroBrief – AI Document Summarizer", desc:"A GPT-4-powered web app that condenses lengthy PDFs, research papers, and articles into structured, actionable briefs in seconds. Reduced average document review time by ~70% in user testing, with a streaming response UI that keeps interactions feeling instant.", stack:["React","OpenAI API","Node.js","Tailwind CSS","Vercel"], link:"https://github.com/safkatkhan" },
-  { id:2, emoji:"📊", bg:"linear-gradient(135deg,#1a1a1a 0%,#1e2a1e 100%)", title:"DataPulse – Real-Time Analytics Dashboard", desc:"A full-stack analytics platform with live data ingestion, interactive D3.js charts, CSV import/export, and configurable KPI widgets. Delivered a 3× improvement in reporting speed, enabling data-driven decisions for a fintech client tracking 50,000+ daily events.", stack:["React","D3.js","PostgreSQL","Express","WebSockets"], link:"https://github.com/safkatkhan" },
-  { id:3, emoji:"🔐", bg:"linear-gradient(135deg,#1a1a2a 0%,#1e1e2e 100%)", title:"VaultPass – Encrypted Password Manager", desc:"A production-grade, end-to-end encrypted password manager with a companion browser extension, two-factor authentication, and zero-knowledge architecture. Achieved a perfect score in a third-party penetration test and onboarded 300+ beta users within two weeks.", stack:["React","Node.js","AES-256","MongoDB","Chrome Extension API"], link:"https://github.com/safkatkhan" },
-  { id:4, emoji:"🛒", bg:"linear-gradient(135deg,#1a1208 0%,#2a1e08 100%)", title:"ShopNest – Multi-Vendor Marketplace", desc:"A scalable multi-vendor e-commerce platform built with Next.js and Stripe Connect, supporting independent seller storefronts and automated payouts. Processed 500+ daily transactions within its first month and achieved a Lighthouse score of 94 across all production pages.", stack:["Next.js","Stripe Connect","MongoDB","Tailwind CSS","Vercel"], link:"https://github.com/safkatkhan" },
-  { id:5, emoji:"🩺", bg:"linear-gradient(135deg,#081a12 0%,#0e2a1a 100%)", title:"MediQueue – Healthcare Appointment System", desc:"A HIPAA-conscious appointment booking and queue management system for a network of private clinics, with real-time slot availability and automated SMS reminders. Reduced patient no-show rates by 35% and cut front-desk administrative workload by half.", stack:["React","Node.js","PostgreSQL","Twilio","Docker","AWS"], link:"https://github.com/safkatkhan" },
-  { id:6, emoji:"💬", bg:"linear-gradient(135deg,#0d0818 0%,#1a0d2e 100%)", title:"SupportIQ – AI-Powered Help Desk", desc:"An intelligent customer support platform using GPT-4 and LangChain to auto-classify tickets, suggest responses to agents, and resolve routine queries autonomously. Reduced average ticket resolution time by 48% and deflected 30% of queries without human involvement.", stack:["React","LangChain","OpenAI API","Node.js","PostgreSQL","Webhooks"], link:"https://github.com/safkatkhan" },
+  {
+    id:1,
+    emoji:"💼",
+    bg:"linear-gradient(135deg,#1a1a2e 0%,#16213e 100%)",
+    title:"JobHunters Web",
+    desc:"A full-featured job posting website where employers can list vacancies and job seekers can browse and apply. Built with role-based access, a clean listings interface, and seamless application management for both sides of the hiring process.",
+    stack:["React","JavaScript","Firebase","Tailwind CSS"],
+    link:"https://github.com/0xSafkat20/JobHunters_Web",
+    live:null,
+  },
+  {
+    id:2,
+    emoji:"📊",
+    bg:"linear-gradient(135deg,#0d1a1a 0%,#0e2a22 100%)",
+    title:"Tech Blog Platform",
+    desc:"Frontend of a role-based full-stack polling and survey platform. Admins manage users and surveys, surveyors create and track responses, and users participate and vote — all with real-time data visualisations powered by Recharts.",
+    stack:["React.js","Tailwind CSS","Recharts","Firebase","Node.js","MongoDB"],
+    link:"https://github.com/0xSafkat20/Tech-client-side",
+    live:"https://rasel-blog-web.web.app/",
+  },
+  {
+    id:3,
+    emoji:"🧠",
+    bg:"linear-gradient(135deg,#081a12 0%,#0e2a1a 100%)",
+    title:"Digital MentalAid",
+    desc:"A compassionate digital platform providing mental health resources, self-help tools, and support features. Built to connect users with guidance in a safe, welcoming environment with a calming and accessible UI.",
+    stack:["React","JavaScript","Firebase","CSS"],
+    link:"https://github.com/0xSafkat20/Digital-MentalAid",
+    live:null,
+  },
+  {
+    id:4,
+    emoji:"🚇",
+    bg:"linear-gradient(135deg,#1a1208 0%,#2a1a08 100%)",
+    title:"Metro Rail Ticket System",
+    desc:"A complete desktop metro rail ticket booking system built with C# and SQL Server. Features user authentication, admin dashboard, train schedule management, e-ticketing, and integrated payment processing across 11 distinct application pages.",
+    stack:["C#","SQL Server","SSMS","Windows Forms","GUI"],
+    link:"https://github.com/0xSafkat20/Metro-Rail_Online_Ticket_System",
+    live:null,
+  },
+  {
+    id:5,
+    emoji:"🌐",
+    bg:"linear-gradient(135deg,#1a0d2e 0%,#2a1040 100%)",
+    title:"My Portfolio (3D)",
+    desc:"A visually striking 3D interactive personal portfolio built with React.js and Three.js. Showcases projects, skills, and experience through immersive 3D elements, smooth page animations, and a fully responsive layout.",
+    stack:["React","Three.js","JavaScript","Tailwind CSS","CSS"],
+    link:"https://github.com/0xSafkat20/My_Portfolio",
+    live:"https://safkat-khan.surge.sh/",
+  },
+  {
+    id:6,
+    emoji:"📋",
+    bg:"linear-gradient(135deg,#0d1018 0%,#0e182e 100%)",
+    title:"Polling & Survey App",
+    desc:"A dynamic polling and survey application with role-based access for admins, surveyors, and users. Features real-time vote charts, pro-user memberships with payment, comment and report systems, and Google authentication — deployed live on Firebase.",
+    stack:["React","Firebase","Node.js","MongoDB","Express","Tailwind CSS"],
+    link:"https://github.com/0xSafkat20/Polling_and_Survey_App-Clint_site",
+    live:"https://polling-and-survey-client.web.app/",
+  },
 ];
 
 const SKILLS_DATA = [
-  { icon:"💻", title:"Frontend Development", desc:"Crafting pixel-perfect, responsive interfaces with React and Next.js. I use TypeScript for type safety and Tailwind CSS for rapid, consistent styling — always prioritising performance and accessibility in every layer of the UI.", tags:["React.js","Next.js","TypeScript","Tailwind CSS","HTML5","CSS3","Framer Motion"] },
-  { icon:"⚙️", title:"Backend Development", desc:"Designing robust, scalable server-side systems using Node.js and Express. I architect REST and GraphQL APIs, model complex data in PostgreSQL and MongoDB, and write server logic that's clean, testable, and easy to extend as products grow.", tags:["Node.js","Express","REST APIs","GraphQL","PostgreSQL","MongoDB","Redis"] },
-  { icon:"🤖", title:"AI & LLM Integration", desc:"Bridging cutting-edge AI models with real-world products. I integrate OpenAI, LangChain, and custom prompt pipelines into web apps — enabling intelligent search, document analysis, automated workflows, and conversational interfaces.", tags:["OpenAI API","LangChain","Prompt Engineering","RAG","Embeddings","Webhooks","OAuth 2.0"] },
-  { icon:"🛠️", title:"DevOps & Tooling", desc:"Shipping confidently with modern DevOps practices baked in from day one. I containerise with Docker, manage deployments on AWS and Vercel, and maintain clean Git workflows that support fast-moving teams.", tags:["Git & GitHub","Docker","Vercel","AWS S3 / EC2","Postman","CI/CD","Agile / Scrum"] },
-  { icon:"🔒", title:"Security & Authentication", desc:"Building software users can trust. I implement AES-256 client-side encryption, zero-knowledge architectures, OAuth 2.0 flows, JWT authentication, 2FA, and OWASP-guided input validation across every project.", tags:["AES-256 Encryption","JWT","OAuth 2.0","2FA / TOTP","OWASP","HTTPS / TLS","bcrypt"] },
-  { icon:"📈", title:"Performance & SEO", desc:"Making apps fast, discoverable, and competitive on search engines. I audit Core Web Vitals, implement lazy loading, code splitting, and CDN strategies to consistently hit Lighthouse scores above 90.", tags:["Core Web Vitals","Lighthouse Auditing","Lazy Loading","Code Splitting","SSR / SSG","Structured Data","CDN Optimisation"] },
+  {
+    icon:"⚛️",
+    title:"Frontend Development",
+    desc:"React is where most of my projects live — from job boards and survey dashboards to 3D portfolios. I enjoy making UIs that feel smooth and intentional, not just functional. Tailwind CSS is my go-to for keeping styles fast and consistent without the bloat.",
+    tags:["React.js","JavaScript (ES6+)","Tailwind CSS","HTML5","CSS3","Three.js","Recharts"],
+  },
+  {
+    icon:"🔥",
+    title:"Firebase & BaaS",
+    desc:"Firebase has been the backbone of several of my apps — handling auth, real-time data, and hosting all in one place. I've used it across projects like the Polling App, Digital MentalAid, and JobHunters, and I genuinely enjoy how much it lets me ship without managing servers.",
+    tags:["Firebase Auth","Firestore","Firebase Hosting","Google Sign-In","Real-time DB","Environment Config"],
+  },
+  {
+    icon:"🛠️",
+    title:"Backend & APIs",
+    desc:"When projects need their own server, I reach for Node.js and Express. I've built REST APIs for role-based systems where admins, surveyors, and regular users all need different access — and MongoDB is usually where the data ends up.",
+    tags:["Node.js","Express.js","REST APIs","MongoDB","Mongoose","JWT","Role-based Access"],
+  },
+  {
+    icon:"🖥️",
+    title:"Desktop & C# Development",
+    desc:"Not everything lives in a browser. My Metro Rail Ticket System showed me how satisfying it is to build a full GUI desktop app from scratch — login flows, admin dashboards, payment screens, all wired up to a real SQL Server database.",
+    tags:["C#","Windows Forms","SQL Server","SSMS","OOP","Desktop GUI","Database Design"],
+  },
+  {
+    icon:"📊",
+    title:"Data Visualisation & UX",
+    desc:"A survey app without good charts is just a form. I care about presenting data in a way that's actually readable — using Recharts to turn vote counts and response data into visuals that help users understand results at a glance.",
+    tags:["Recharts","Chart.js","Responsive Design","Accessibility","UI Animations","CSS Transitions","User Flows"],
+  },
+  {
+    icon:"🚀",
+    title:"Tools & Workflow",
+    desc:"I try to keep my workflow clean and reproducible. Git for version control, Vite for fast local dev, and Firebase or Vercel for deploying quickly. I also know my way around Postman for API testing and VS Code for pretty much everything else.",
+    tags:["Git & GitHub","Vite","Vercel","Postman","VS Code","npm / yarn","Agile Basics"],
+  },
 ];
 
 const BLOG_POSTS = [
@@ -702,7 +786,10 @@ export default function Portfolio() {
                   <div className="project-stack">
                     {p.stack.map(t => <span className="project-tag" key={t}>{t}</span>)}
                   </div>
-                  <a href={p.link} className="project-link" target="_blank" rel="noreferrer">View Case Study →</a>
+                  <div style={{ display:"flex", gap:"1.2rem", marginTop:"auto", flexWrap:"wrap" }}>
+                    <a href={p.link} className="project-link" target="_blank" rel="noreferrer">GitHub →</a>
+                    {p.live && <a href={p.live} className="project-link" target="_blank" rel="noreferrer">Live Demo ↗</a>}
+                  </div>
                 </div>
               </div>
             ))}
